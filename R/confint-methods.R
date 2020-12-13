@@ -115,7 +115,7 @@
         absDev <- abs(sweep(simDev, 1, se, FUN = "/")) # absolute deviations
         masd <- apply(absDev, 2L, max)  # & maxabs deviation per sim
         ## simultaneous interval critical value
-        crit <- quantile(masd, prob = level, type = 8)
+        crit <- quantile(masd, prob = level, type = 8, na.rm = TRUE)
         ## return as data frame
         data.frame(lower = d - (crit * se), est = d, upper = d + (crit * se))
     }
